@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #070D18;
+  --bg-surface: #0B1324;
+  --bg-card: #0F1B33;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --cyan-accent: #22D3EE;
+  --lime-accent: #A3E635;
+  --emerald-accent: #10B981;
+}
+
+html.light-mode {
+  --bg-primary: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-card: #F1F5F9;
+  --text-main: #0B1220;
+  --text-muted: #64748B;
+  --border-subtle: rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+.container-page {
+  width: min(1320px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .container-page {
+    width: min(1320px, calc(100% - 48px));
+  }
+}
+
+.section-pad {
+  padding-block: 84px;
+}
+
+.section-kicker {
+  color: #06b6d4;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title {
+  margin-top: 10px;
+  font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+}
+
+html.light-mode .form-label {
+  color: #334155;
+}
+
+.doctor-pagination .swiper-pagination-bullet {
+  height: 8px;
+  width: 20px;
+  border-radius: 99px;
+  background: #38bdf8;
+  opacity: 0.35;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.doctor-pagination .swiper-pagination-bullet-active {
+  background: #22d3ee;
+  width: 44px;
+  opacity: 1;
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.6);
+}
+
+/* Graphic Motion & Backgrounds */
+.medical-grid-bg {
+  background-image: radial-gradient(rgba(34, 211, 238, 0.08) 1px, transparent 1px),
+                    radial-gradient(rgba(163, 230, 53, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-position: 0 0, 18px 18px;
+}
+
+.glass-panel {
+  background: rgba(15, 27, 51, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(34, 211, 238, 0.4);
+  box-shadow: 0 18px 38px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 211, 238, 0.12);
+}
+
+/* Pulsing rings */
+.pulse-ring {
+  position: relative;
+}
+.pulse-ring::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid currentColor;
+  opacity: 0.8;
+  animation: pulse-ring 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  70% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* Heartbeat ECG wave animation */
+.ecg-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: ecg-draw 3s linear infinite;
+}
+
+@keyframes ecg-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Auth Page specific styling */
+.auth-page {
+  background: radial-gradient(ellipse at 15% 15%, rgba(8, 145, 178, 0.28), transparent 38%),
+              radial-gradient(ellipse at 85% 85%, rgba(132, 204, 22, 0.16), transparent 35%),
+              linear-gradient(135deg, #050B14 0%, #091527 50%, #0D2038 100%);
+}
+
+.auth-orb {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(103, 232, 249, 0.2);
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: auth-float 14s ease-in-out infinite;
+}
+
+.auth-orb-one {
+  width: 480px;
+  height: 480px;
+  top: -200px;
+  right: 6%;
+  box-shadow: 0 0 120px rgba(34, 211, 238, 0.14), inset 0 0 90px rgba(34, 211, 238, 0.06);
+}
+
+.auth-orb-two {
+  width: 340px;
+  height: 340px;
+  bottom: -150px;
+  left: 4%;
+  animation-delay: -6s;
+  box-shadow: 0 0 100px rgba(132, 204, 22, 0.12);
+}
+
+@keyframes auth-float {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(24px, 30px, 0) scale(1.05); }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(11, 18, 32, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.3);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

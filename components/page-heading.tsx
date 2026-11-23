@@ -1,0 +1,1 @@
+export function PageHeading({eyebrow,title,description}:{eyebrow:string;title:string;description:string}){return <div className="mb-10 max-w-2xl"><p className="section-kicker">{eyebrow}</p><h1 className="section-title">{title}</h1><p className="mt-4 leading-7 text-slate-600">{description}</p></div>}
